@@ -1,0 +1,18 @@
+<languageTranslations>
+	<welcome>Welcome to the UserPreferator, where all your UserPrefs can be set.</welcome>
+	<exit>Enter ‘x’ at any time to exit the program.</exit>
+	<currentPreferences>Your current preferences are: </currentPreferences>
+	<setPreferences>Enter the number [1: Language,2: Display Name,3: Preferred Number,4: Animal Friend] to change a preference: </setPreferences>
+	<currentLanguagePreference>Your current language preference is: </currentLanguagePreference>
+	<currentDisplayNamePreference>Your current display name preference is: </currentDisplayNamePreference>
+	<currentNumberPreference>Your current number preference is: </currentNumberPreference>
+	<currentAnimalFriendPreference>Your current animal friend preference is: </currentAnimalFriendPreference>
+	<setLanguagePreference>Set your language preference to: </setLanguagePreference>
+	<setDisplayNamePreference>Set your current display name preference to: </setDisplayNamePreference>
+	<setNumberPreference>Set your number preference to [1,2,3,4]: </setNumberPreference>
+	<setAnimalFriendPreference>Set your animal friend preference to: </setAnimalFriendPreference>
+	<updatedLanguagePreference>Language preference is now: </updatedLanguagePreference>
+	<updatedDisplayNamePreference>Display name preference is now: </updatedDisplayNamePreference>
+	<updatedNumberPreference>Number preference is now: </updatedNumberPreference>
+	<updatedAnimalFriendPreference>Animal friend preference is now: </updatedAnimalFriendPreference>
+</languageTranslations>

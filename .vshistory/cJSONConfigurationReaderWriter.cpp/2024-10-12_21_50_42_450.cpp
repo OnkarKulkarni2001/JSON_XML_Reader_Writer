@@ -1,0 +1,195 @@
+#include "cJSONConfigurationReaderWriter.h"
+#include <fstream>
+#include <nlohmann/json.hpp>
+#include <iostream>
+
+bool cJSONConfigurationReaderWriter::ReadConfig(sConfig& config)
+{
+    std::ifstream inputFile("config.json");
+    if (!inputFile.is_open()) {
+        std::cerr << "Failed to open config file." << std::endl;
+        return false;
+    }
+
+    nlohmann::json jsonData;
+    try {
+        inputFile >> jsonData;
+    }
+    catch (nlohmann::json::parse_error& e) {
+        std::cerr << "JSON parse error: " << e.what() << std::endl;
+        inputFile.close();
+        return false;
+    }
+
+    inputFile.close();
+
+    try {
+        // Read the preferences file name
+        config.preferenceFileName = jsonData.at("preferenceFileName").get<std::string>();
+
+        // Populate language files from the listOfLanguages array
+        for (const auto& item : jsonData.at("listOfLanguages").at("language")) {
+            std::string langName = item.at("languageName").get<std::string>();
+            std::string langFile = item.at("languageFile").get<std::string>();
+            config.listOfLanguages[langName] = langFile; // Assuming languageFiles is a map
+        }
+    }
+    catch (nlohmann::json::exception& e) {
+        std::cerr << "Error accessing JSON data: " << e.what() << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+bool cJSONConfigurationReaderWriter::WriteConfig(const sConfig& config)
+{
+    nlohmann::json jsonData;
+
+    // Populate jsonData with the structure we want
+    jsonData["preferenceFileName"] = config.preferenceFileName;
+
+    // Prepare the list of languages
+    nlohmann::json languages = nlohmann::json::array();
+
+    // Assuming config.languageFiles is a std::vector or a std::map
+    for (const auto& language : config.listOfLanguages) {
+        nlohmann::json languageEntry;
+
+        // If language is a pair (std::map or std::unordered_map)
+        languageEntry["languageName"] = language.first;   // Language name
+        languageEntry["languageFile"] = language.second;   // Language file name
+
+        languages.push_back(languageEntry);
+    }
+
+    // Set the languages into the jsonData
+    jsonData["listOfLanguages"]["language"] = languages;
+
+    // Write the jsonData to the file
+    std::ofstream outputFile("config.json");
+    if (!outputFile.is_open()) {
+        std::cerr << "Failed to open config file for writing." << std::endl;
+        return false;
+    }
+
+    outputFile << jsonData.dump(4); // Pretty print with an indent of 4 spaces
+    outputFile.close();
+
+    return true;
+}
+
+bool cJSONConfigurationReaderWriter::ReadPreferences(sPreferences& preferences)
+{
+    std::ifstream inputFile("preference.json");
+    if (!inputFile.is_open()) {
+        std::cerr << "Failed to open preferences file." << std::endl;
+        return false;
+    }
+
+    nlohmann::json jsonData;
+    try {
+        inputFile >> jsonData; // Read the JSON data from the file
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error reading JSON data: " << e.what() << std::endl;
+        return false;
+    }
+
+    // Extract data from the JSON object
+    try {
+        preferences.languagePreference = jsonData.at("languagePreference").get<std::string>();
+        preferences.preferenceNumber = jsonData.at("preferenceNumber").get<int>();
+        preferences.preferenceString = jsonData.at("preferenceString").get<std::string>();
+
+        // You can add more preferences extraction here as needed
+    }
+    catch (const nlohmann::json::exception& e) {
+        std::cerr << "Error accessing JSON data: " << e.what() << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+bool cJSONConfigurationReaderWriter::WritePreferences(const sPreferences& preferences)
+{
+    nlohmann::json jsonData;
+
+    // Populate the jsonData object with preference values
+    jsonData["languagePreference"] = preferences.languagePreference;
+    jsonData["preferenceNumber"] = preferences.preferenceNumber;
+    jsonData["preferenceString"] = preferences.preferenceString;
+
+    // Add other preferences to jsonData as needed
+
+    // Write the JSON object to a file
+    std::ofstream outputFile("preference.json");
+    if (!outputFile.is_open()) {
+        std::cerr << "Failed to open preferences file for writing." << std::endl;
+        return false;
+    }
+
+    try {
+        outputFile << jsonData.dump(4); // Write JSON with 4 spaces of indentation
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error writing JSON data: " << e.what() << std::endl;
+        return false;
+    }
+
+    outputFile.close();
+    return true;
+}
+
+bool cJSONConfigurationReaderWriter::ReadLanguage(sLanguage& language, const std::string& languageFile)
+{
+    std::ifstream inputFile(languageFile);
+    if (!inputFile.is_open()) {
+        std::cerr << "Error opening language file: " << languageFile << std::endl;
+        return false;
+    }
+
+    // Read the file content into a string for logging
+    std::string fileContent((std::istreambuf_iterator<char>(inputFile)),
+        std::istreambuf_iterator<char>());
+    std::cout << "Content of the language file:\n" << fileContent << std::endl;
+
+    inputFile.clear(); // Clear the end-of-file flag
+    inputFile.seekg(0); // Rewind the stream
+
+    nlohmann::json jsonData;
+    try {
+        inputFile >> jsonData;  // Read the JSON data
+    }
+    catch (const nlohmann::json::parse_error& e) {
+        std::cerr << "Error reading JSON data: " << e.what() << std::endl;
+        return false;
+    }
+
+    // Check for the presence of the "languageTranslations" key
+    if (jsonData.contains("languageTranslations")) {
+        const auto& translations = jsonData["languageTranslations"];
+
+        // Iterate over the translations
+        if (translations.is_object()) {
+            for (auto& [key, value] : translations.items()) {
+                if (value.is_string()) {
+                    // Store the translations in the sLanguage structure
+                    translationsMap[key] = value.get<std::string>();
+                }
+                else {
+                    std::cerr << "Warning: Value for key '" << key << "' is not a string." << std::endl;
+                }
+            }
+        }
+        else {
+            std::cerr << "Warning: 'languageTranslations' is not an object." << std::endl;
+        }
+    }
+    else {
+        std::cerr << "Warning: 'languageTranslations' key not found in the JSON." << std::endl;
+    }
+
+    return true;
+}

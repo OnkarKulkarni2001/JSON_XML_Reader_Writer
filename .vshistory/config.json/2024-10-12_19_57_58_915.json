@@ -1,0 +1,15 @@
+{
+  "preferenceFileName": "preference.xml",
+  "listOfLanguages": {
+    "language": [
+      {
+        "languageName": "English",
+        "languageFile": "english.xml"
+      },
+      {
+        "languageName": "GenZ English",
+        "languageFile": "genzEnglish.xml"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+﻿  Source.cpp
+  cJSONConfigurationReaderWriter.cpp
+  cLibrary.cpp
+  cTranslator.cpp
+  cXMLConfigurationReaderWriter.cpp
+  iConfigurationReaderWriter.cpp
+  Generating Code...
+  Project2New.vcxproj -> D:\Configuration & Deployment\Project2New\x64\Debug\Project2New.exe

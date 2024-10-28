@@ -1,0 +1,18 @@
+<languageTranslations>
+	<welcome>Yo, welcome to UserPreferator! Time to set those UserPrefs, fam.</welcome>
+	<exit>Dip out anytime by hittin’ ‘x’.</exit>
+	<currentPreferences>Ayo, these are your current prefs:</currentPreferences>
+	<setPreferences>Type [1,2,3,4] to switch it up:</setPreferences>
+	<currentLanguagePreference>Your lang preference is:</currentLanguagePreference>
+	<currentDisplayNamePreference>Your display name vibe is:</currentDisplayNamePreference>
+	<currentNumberPreference>Your number preference be like:</currentNumberPreference>
+	<currentAnimalFriendPreference>Your animal bestie preference is:</currentAnimalFriendPreference>
+	<setLanguagePreference>Change your language vibe to:</setLanguagePreference>
+	<setDisplayNamePreference>Set your display name to:</setDisplayNamePreference>
+	<setNumberPreference>Set your number vibe to:</setNumberPreference>
+	<setAnimalFriendPreference>Set your animal buddy preference to:</setAnimalFriendPreference>
+	<updatedLanguagePreference>Bet! Language preference is now:</updatedLanguagePreference>
+	<updatedDisplayNamePreference>Aight! Display name preference is now:</updatedDisplayNamePreference>
+	<updatedNumberPreference>No cap, number preference is now:</updatedNumberPreference>
+	<updatedAnimalFriendPreference>Your animal bestie preference is now:</updatedAnimalFriendPreference>
+</languageTranslations>

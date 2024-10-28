@@ -1,0 +1,11 @@
+<preferenceFileName>preference.xml</preferenceFileName>
+<listOfLanguages>
+	<language>
+		<languageName>English</languageName>
+		<languageFile>english.xml</languageFile>
+	</language>
+	<language>
+		<languageName>GenZ English</languageName>
+		<languageFile>genzEnglish.xml</languageFile>
+	</language>
+</listOfLanguages>

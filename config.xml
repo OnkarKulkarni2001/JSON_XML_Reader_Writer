@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<preferenceFileName>preference.xml</preferenceFileName>
+	<listOfLanguages>
+		<language>
+			<languageName>English</languageName>
+			<languageFile>english.xml</languageFile>
+		</language>
+		<language>
+			<languageName>GenZ English</languageName>
+			<languageFile>genzEnglish.xml</languageFile>
+		</language>
+	</listOfLanguages>
+</config>

@@ -1,0 +1,20 @@
+{
+  "languageTranslations": {
+    "welcome": "Yo, welcome to UserPreferator! Time to set those UserPrefs, fam.",
+    "exit": "Dip out anytime by hittin x.",
+    "currentPreferences": "Ayo, these are your current prefs:",
+    "setPreferences": "Type [1: Language,2: Display Name,3: Preferred Number,4: Animal Friend] to switch it up: ",
+    "currentLanguagePreference": "Your lang preference is: ",
+    "currentDisplayNamePreference": "Your display name vibe is: ",
+    "currentNumberPreference": "Your number preference be like: ",
+    "currentAnimalFriendPreference": "Your animal bestie preference is: ",
+    "setLanguagePreference": "Change your language vibe to: ",
+    "setDisplayNamePreference": "Set your display name to: ",
+    "setNumberPreference": "Set your number vibe to: ",
+    "setAnimalFriendPreference": "Set your animal buddy preference to: ",
+    "updatedLanguagePreference": "Bet! Language preference is now: ",
+    "updatedDisplayNamePreference": "Aight! Display name preference is now: ",
+    "updatedNumberPreference": "No cap, number preference is now: ",
+    "updatedAnimalFriendPreference": "Your animal bestie preference is now: "
+  }
+}

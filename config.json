@@ -1,0 +1,15 @@
+{
+    "listOfLanguages": {
+        "language": [
+            {
+                "languageFile": "english.json",
+                "languageName": "English"
+            },
+            {
+                "languageFile": "genzEnglish.json",
+                "languageName": "GenZ English"
+            }
+        ]
+    },
+    "preferenceFileName": "preference.json"
+}
