@@ -20,4 +20,14 @@ Next time when the program is ran, it will automatically fetch the preferences.j
 
 Currently it is hardcoded to read only json config files but if you want to use xml config files you dont have to change a lot of things! I have taken care of everything! Just open the cTranslator.cpp and make line 11 a comment and uncomment the line 12. Isn't that simple?
 
+## Build Instructions
+
+1) Run the solution
+
+2) Link the libraries in project properties if not linked already (You probably don't need to do this step as it will be automatically set for you!)
+
+3) Right click on the project in solution explored and click on build solution
+
+4) Voila! it's built!
+
 ## Thank you for using my application!😊

@@ -1,8 +1,2 @@
-﻿  Source.cpp
-  cJSONConfigurationReaderWriter.cpp
-  cLibrary.cpp
-  cTranslator.cpp
-  cXMLConfigurationReaderWriter.cpp
-  iConfigurationReaderWriter.cpp
-  Generating Code...
+﻿  LINK : D:\Configuration & Deployment\Project2New\x64\Debug\Project2New.exe not found or not built by the last incremental link; performing full link
   Project2New.vcxproj -> D:\Configuration & Deployment\Project2New\x64\Debug\Project2New.exe
